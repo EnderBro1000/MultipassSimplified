@@ -1,8 +1,12 @@
+from consolemenu import *
+from consolemenu.items import *
+from mpsfunc import *
 import sys
 import getpass
 import time
 import pretty_errors
 import os
+
 
 # File Wide Variables
 app = 'MultipassSimplified'
@@ -17,33 +21,22 @@ def multipasscheck():
     else: 
         print(f"Please install Multipass before launching {app} ") 
         exit()
-# MPS Console Logic 
-def mainconsole(): 
-    g = input('Enter your input: ')
-    f = int(g)
-    if f == 1:
-        print("Launch Instance with Parameters")
-    elif f == 2: 
-        print("Stop Instance with Parameters")
-    elif f == 3:
-        print("Delete Instance with Parameters")
-    elif f == 4: 
-        pass
-    elif f == 5:
-        pass
-    elif f == 6:
-        pass
-    elif f == 7:
-        pass
-    elif f == 8:
-        pass
-    elif f == 9:   
-        pass  
-    else:
-        print("Invalid Operation!")
-     
-        
+       
 # Invoking Multipass Check
 multipasscheck() 
-# Invoke Console
-mainconsole()
+# GUI Logic 
+menu = ConsoleMenu("MultipassSimplified", "A Python TUI Interface for the Multipass VM System by WarpWing")
+# Command Logic 
+command_item1 = CommandItem("Create New MP Instance", input , ["Enter an input"])
+command_item2 = CommandItem("Shell into MP Instance", input , ["Enter an input"])
+command_item3 = CommandItem("Start MP Instance", input , ["Enter an input"])
+command_item4 = CommandItem("Stop MP Instance", input , ["Enter an input"])
+command_item5 = CommandItem("Delete MP Instance", input , ["Enter an input"])
+# Menu Append Array
+menu.append_item(command_item1)
+menu.append_item(command_item2)
+menu.append_item(command_item3)
+menu.append_item(command_item4)
+menu.append_item(command_item5)
+# Menu Show Function 
+menu.show()
